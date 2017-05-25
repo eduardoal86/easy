@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EasynvestTest</string>
+    <string name="name_label_form">Nome</string>
+    <string name="email_label_form">Email</string>
 </resources>
