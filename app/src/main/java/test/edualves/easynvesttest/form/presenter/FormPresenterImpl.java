@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import test.edualves.easynvesttest.R;
+import test.edualves.easynvesttest.form.ui.MainFormFragmentView;
 import test.edualves.easynvesttest.model.Cell;
 
 /**
@@ -19,6 +20,12 @@ import test.edualves.easynvesttest.model.Cell;
  */
 
 public class FormPresenterImpl implements FormPresenter {
+
+    private final MainFormFragmentView view;
+
+    public FormPresenterImpl(MainFormFragmentView view) {
+        this.view = view;
+    }
 
     @Override
     public List<Cell> convertStringJsonToCellsObject(String json) {
@@ -40,6 +47,14 @@ public class FormPresenterImpl implements FormPresenter {
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public void validateName(String name) {
+
+        if (name.equals(null) || name.equals("")) {
+            view.setErrorNameField();
         }
     }
 }

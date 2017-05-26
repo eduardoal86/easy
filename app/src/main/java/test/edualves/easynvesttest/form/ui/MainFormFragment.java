@@ -1,17 +1,23 @@
 package test.edualves.easynvesttest.form.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import test.edualves.easynvesttest.R;
 import test.edualves.easynvesttest.form.presenter.FormPresenter;
 import test.edualves.easynvesttest.form.presenter.FormPresenterImpl;
@@ -20,31 +26,42 @@ import test.edualves.easynvesttest.form.presenter.FormPresenterImpl;
  * Created by edualves on 25/05/17.
  */
 
-public class MainFormFragment extends Fragment {
+public class MainFormFragment extends Fragment implements MainFormFragmentView {
+
+    @BindView(R.id.name_text_input)
+    CustomTextInputLayout nameTextInput;
+
+    @BindView(R.id.email_text_input)
+    CustomTextInputLayout emailTextInput;
 
     @BindView(R.id.input_name)
-    TextInputEditText nameEditText;
+    EditText nameEditText;
 
     @BindView(R.id.input_email)
-    TextInputEditText emailEditText;
+    EditText emailEditText;
 
-    private FormPresenter presenter = new FormPresenterImpl();
+    private FormPresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
         View view = inflater.inflate(R.layout.fragment_main_form, container, false);
         ButterKnife.bind(this, view);
 
-        presenter.convertStringJsonToCellsObject(readJsonCells());
+        presenter = new FormPresenterImpl(this);
 
-        validateFields();
+        presenter.convertStringJsonToCellsObject(readJsonCells());
 
         return view;
     }
 
-    private void validateFields() {
+    private void validateNameField() {
 
-        //nameEditText.
+        presenter.validateName(nameTextInput.getEditText().getText().toString());
+    }
+
+    @OnClick(R.id.send_btn)
+    void sendInfo() {
+        validateNameField();
     }
 
 
@@ -70,4 +87,8 @@ public class MainFormFragment extends Fragment {
     }
 
 
+    @Override
+    public void setErrorNameField() {
+        nameTextInput.setError(getResources().getString(R.string.mandatory_field));
+    }
 }

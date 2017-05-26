@@ -11,4 +11,6 @@ import test.edualves.easynvesttest.model.Cell;
 public interface FormPresenter {
 
     List<Cell> convertStringJsonToCellsObject(String json);
+
+    void validateName(String name);
 }
