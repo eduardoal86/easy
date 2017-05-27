@@ -14,6 +14,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +23,7 @@ import butterknife.OnClick;
 import test.edualves.easynvesttest.R;
 import test.edualves.easynvesttest.form.presenter.FormPresenter;
 import test.edualves.easynvesttest.form.presenter.FormPresenterImpl;
+import test.edualves.easynvesttest.model.Cell;
 
 /**
  * Created by edualves on 25/05/17.
@@ -41,6 +44,7 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     EditText emailEditText;
 
     private FormPresenter presenter;
+    private List<Cell> cells = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -49,19 +53,27 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
 
         presenter = new FormPresenterImpl(this);
 
-        presenter.convertStringJsonToCellsObject(readJsonCells());
+        cells = presenter.convertStringJsonToCellsObject(readJsonCells());
+
+        setUpFields();
 
         return view;
     }
 
-    private void validateNameField() {
+    private void setUpFields() {
 
-        presenter.validateName(nameTextInput.getEditText().getText().toString());
+        nameEditText.setHint(cells.get(1).getMessage());
+
     }
 
     @OnClick(R.id.send_btn)
     void sendInfo() {
         validateNameField();
+    }
+
+    private void validateNameField() {
+
+        presenter.validateName(nameTextInput.getEditText().getText().toString());
     }
 
 

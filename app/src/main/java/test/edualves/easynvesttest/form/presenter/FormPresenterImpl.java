@@ -2,6 +2,7 @@ package test.edualves.easynvesttest.form.presenter;
 
 import com.google.gson.Gson;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,7 +54,7 @@ public class FormPresenterImpl implements FormPresenter {
     @Override
     public void validateName(String name) {
 
-        if (name.equals(null) || name.equals("")) {
+        if (StringUtils.isEmpty(name)) {
             view.setErrorNameField();
         }
     }
