@@ -1,5 +1,7 @@
 package test.edualves.easynvesttest.form.presenter;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import test.edualves.easynvesttest.R;
+import test.edualves.easynvesttest.form.ui.CustomTextInputLayout;
 import test.edualves.easynvesttest.form.ui.MainFormFragmentView;
 import test.edualves.easynvesttest.model.Cell;
 
@@ -52,10 +55,24 @@ public class FormPresenterImpl implements FormPresenter {
     }
 
     @Override
-    public void validateName(String name) {
+    public void validateFieldIsEmpty(CustomTextInputLayout field, String str) {
 
-        if (StringUtils.isEmpty(name)) {
-            view.setErrorNameField();
+        if (StringUtils.isEmpty(str)) {
+            view.setErrorMandatoryField(field);
         }
+    }
+
+    @Override
+    public String formatTitleMessage(String msg) {
+
+        StringBuilder stringBuilder = new StringBuilder(msg);
+
+        int i = 0;
+        while ((i = stringBuilder.indexOf(" ", i + 27)) != -1) {
+
+            stringBuilder.replace(i, i + 1, "\n");
+        }
+
+        return stringBuilder.toString();
     }
 }

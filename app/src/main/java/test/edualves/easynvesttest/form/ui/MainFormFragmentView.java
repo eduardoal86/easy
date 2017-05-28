@@ -6,6 +6,6 @@ package test.edualves.easynvesttest.form.ui;
 
 public interface MainFormFragmentView {
 
-    void setErrorNameField();
+    void setErrorMandatoryField(CustomTextInputLayout field);
 
 }

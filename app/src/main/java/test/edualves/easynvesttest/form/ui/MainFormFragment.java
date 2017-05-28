@@ -2,25 +2,22 @@ package test.edualves.easynvesttest.form.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.edualves.easynvesttest.R;
+import test.edualves.easynvesttest.Utils;
 import test.edualves.easynvesttest.form.presenter.FormPresenter;
 import test.edualves.easynvesttest.form.presenter.FormPresenterImpl;
 import test.edualves.easynvesttest.model.Cell;
@@ -43,8 +40,14 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     @BindView(R.id.input_email)
     EditText emailEditText;
 
+    @BindView(R.id.title_message)
+    TextView titleMessage;
+
     private FormPresenter presenter;
     private List<Cell> cells = new ArrayList<>();
+
+    Map<CustomTextInputLayout, Cell> fieldsMap = new HashMap<>();
+    String titleMsg;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -53,54 +56,69 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
 
         presenter = new FormPresenterImpl(this);
 
-        cells = presenter.convertStringJsonToCellsObject(readJsonCells());
+        cells = presenter.convertStringJsonToCellsObject(Utils.readJsonCells(getActivity()));
 
+
+        setUpConfigs();
+
+        formatTitleMessage();
         setUpFields();
 
+
         return view;
+    }
+
+    private void setUpConfigs() {
+
+        //TODO Use different Structure for store this
+        for (int i = 0; i < cells.size(); i++) {
+
+            if (cells.get(i).getType() == 2) {
+                titleMsg = cells.get(i).getMessage();
+            }
+
+            //TODO Change 1 for Enum value
+            if (cells.get(i).getType() == 1) {
+                if (cells.get(i).getMessage().startsWith("Nome")) {
+                    fieldsMap.put(nameTextInput, cells.get(i));
+                } else if (cells.get(i).getMessage().startsWith("Email")) {
+                    fieldsMap.put(emailTextInput, cells.get(i));
+                }
+
+            }
+        }
+
+    }
+
+    private void formatTitleMessage() {
+        titleMessage.setText(presenter.formatTitleMessage(titleMsg));
     }
 
     private void setUpFields() {
 
         nameEditText.setHint(cells.get(1).getMessage());
+        emailEditText.setHint(cells.get(3).getMessage());
 
     }
 
     @OnClick(R.id.send_btn)
     void sendInfo() {
-        validateNameField();
+        isMandatoryField();
     }
 
-    private void validateNameField() {
+    private void isMandatoryField() {
 
-        presenter.validateName(nameTextInput.getEditText().getText().toString());
-    }
+        for (Map.Entry<CustomTextInputLayout, Cell> fields : fieldsMap.entrySet()) {
 
-
-    //TODO Check if it is possible remove this class from fragment in the future
-    private String readJsonCells() {
-
-        String json;
-
-        try {
-            InputStream inputStream = getResources().openRawResource(R.raw.cells);
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            json = new String(buffer, "UTF-8");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            if (fields.getValue().getRequired()) {
+                presenter.validateFieldIsEmpty(fields.getKey(), fields.getKey().getEditText().getText().toString());
+            }
         }
 
-        return json;
     }
 
-
     @Override
-    public void setErrorNameField() {
-        nameTextInput.setError(getResources().getString(R.string.mandatory_field));
+    public void setErrorMandatoryField(CustomTextInputLayout field) {
+        field.setError(getResources().getString(R.string.mandatory_field));
     }
 }
