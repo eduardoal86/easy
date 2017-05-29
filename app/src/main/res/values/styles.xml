@@ -9,9 +9,9 @@
     </style>
 
     <style name="EditTextFloatingLabelRegisterBlue" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:textColorHint">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/Manatee</item>
         <item name="colorControlNormal">#cccccc</item>
-        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/Manatee</item>
         <item name="colorControlHighlight">@color/Manatee</item>
         <item name="android:editTextColor">@color/AuroMetalSaurus</item>
     </style>

@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     tools:context="test.edualves.easynvesttest.form.ui.MainFormActivity"
     android:focusable="true"
+    android:background="@color/background_default"
     android:focusableInTouchMode="true">
 
     <TextView
         android:id="@+id/title_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="44dp"
         android:textAlignment="center"
         android:textSize="16sp"
@@ -21,28 +20,31 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Olá, primeiro se apresente\n com o seu nome:" />
+        tools:text="Olá, primeiro se apresente\n com o seu nome:"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1" />
 
     <test.edualves.easynvesttest.form.ui.CustomTextInputLayout
         android:id="@+id/email_text_input"
-        android:layout_width="346dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="20dp"
         android:theme="@style/EditTextFloatingLabelRegisterBlue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_text_input"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="93dp">
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1">
 
         <EditText
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#000"
             android:textSize="14sp"
             tools:hint="@string/email_label_form" />
 
@@ -53,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="35dp"
@@ -66,13 +68,19 @@
 
     <RelativeLayout
         android:id="@+id/send_btn"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:background="@drawable/blue_btn_shape"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_email">
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_email"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -87,25 +95,41 @@
 
     <test.edualves.easynvesttest.form.ui.CustomTextInputLayout
         android:id="@+id/name_text_input"
-        android:layout_width="346dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="157dp"
         android:theme="@style/EditTextFloatingLabelRegisterBlue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1">
 
         <EditText
             android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#000"
             android:textSize="14sp"
             tools:hint="@string/name_label_form" />
 
     </test.edualves.easynvesttest.form.ui.CustomTextInputLayout>
+
+    <ImageView
+        android:id="@+id/name_clear"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:src="@drawable/ic_limpar"
+        android:layout_marginEnd="7dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/name_text_input"
+        app:layout_constraintTop_toTopOf="@+id/name_text_input"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="7dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#10a3c1</color>
     <color name="AuroMetalSaurus">#777777</color>
-    <color name="Manatee">#999999</color>
+    <color name="Manatee">#ACACAC</color>
+    <color name="background_default">#EBEBEB</color>
     <color name="GhostWhite">#fafbfc</color>
     <color name="DarkOrange">#ff8000</color>
     <color name="SlateGray">#74719e</color>

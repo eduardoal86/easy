@@ -46,8 +46,8 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     private FormPresenter presenter;
     private List<Cell> cells = new ArrayList<>();
 
-    Map<CustomTextInputLayout, Cell> fieldsMap = new HashMap<>();
-    String titleMsg;
+    private Map<CustomTextInputLayout, Cell> fieldsMap = new HashMap<>();
+    private String titleMsg;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -57,7 +57,6 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
         presenter = new FormPresenterImpl(this);
 
         cells = presenter.convertStringJsonToCellsObject(Utils.readJsonCells(getActivity()));
-
 
         setUpConfigs();
 
@@ -115,6 +114,11 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
             }
         }
 
+    }
+
+    @OnClick(R.id.name_clear)
+    void clearContentNameInput() {
+        nameEditText.setText("");
     }
 
     @Override
