@@ -64,11 +64,13 @@ public class FormPresenterImpl implements FormPresenter {
     }
 
     @Override
-    public void validateEmailField(String email) {
+    public boolean validateEmailField(String email) {
 
         if (!Utils.FieldValidationUtil.isValidEmail(email)){
             view.setInvalidEmailError();
+            return false;
         }
+        return true;
     }
 
     @Override

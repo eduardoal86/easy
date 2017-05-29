@@ -20,6 +20,17 @@ public class MainFormActivity extends AppCompatActivity {
     private void goToFragment() {
 
         MainFormFragment fragment = new MainFormFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_container, fragment)
+                .commit();
+    }
+
+    public void showSuccessScreen() {
+        InitialSuccessFragment initialSuccessFragment = new InitialSuccessFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, initialSuccessFragment)
+                .commit();
     }
 }

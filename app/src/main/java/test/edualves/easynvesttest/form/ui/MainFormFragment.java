@@ -103,11 +103,13 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     @OnClick(R.id.send_btn)
     void sendInfo() {
         isMandatoryField();
-        isEmailValid();
+        if (isEmailValid()) {
+            goToSuccessScreen();
+        }
     }
 
-    private void isEmailValid() {
-        presenter.validateEmailField(emailTextInput.getEditText().getText().toString());
+    private boolean isEmailValid() {
+        return presenter.validateEmailField(emailTextInput.getEditText().getText().toString());
     }
 
     private void isMandatoryField() {
@@ -119,6 +121,10 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
             }
         }
 
+    }
+
+    private void goToSuccessScreen() {
+        ((MainFormActivity) getActivity()).showSuccessScreen();
     }
 
     @OnClick(R.id.name_clear)

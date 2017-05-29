@@ -6,4 +6,6 @@
     <string name="next_btn_title">PRONTO</string>
     <string name="mandatory_field">Campo obrigatório</string>
     <string name="invalid_email_error">Email inválido</string>
+    <string name="success_title">Obrigado pelas informações!</string>
+    <string name="btn_success_title">Vamos investir!</string>
 </resources>
