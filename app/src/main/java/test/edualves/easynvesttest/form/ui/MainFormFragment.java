@@ -103,6 +103,11 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     @OnClick(R.id.send_btn)
     void sendInfo() {
         isMandatoryField();
+        isEmailValid();
+    }
+
+    private void isEmailValid() {
+        presenter.validateEmailField(emailTextInput.getEditText().getText().toString());
     }
 
     private void isMandatoryField() {
@@ -125,4 +130,11 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     public void setErrorMandatoryField(CustomTextInputLayout field) {
         field.setError(getResources().getString(R.string.mandatory_field));
     }
+
+    @Override
+    public void setInvalidEmailError() {
+        emailTextInput.setError(getResources().getString(R.string.invalid_email_error));
+    }
+
+
 }

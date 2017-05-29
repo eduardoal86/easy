@@ -5,4 +5,5 @@
     <string name="email_checkbox_text">Gostaria de cadastrar meu email</string>
     <string name="next_btn_title">PRONTO</string>
     <string name="mandatory_field">Campo obrigatório</string>
+    <string name="invalid_email_error">Email inválido</string>
 </resources>

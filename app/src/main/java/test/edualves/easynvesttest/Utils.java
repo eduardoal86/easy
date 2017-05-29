@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.regex.Pattern;
 
 /**
  * Created by edualves on 28/05/17.
@@ -30,4 +31,17 @@ public class Utils {
 
         return json;
     }
+
+    public enum FieldValidationUtil {
+        ;
+        private static final Pattern mailValidationPattern = Pattern.compile(
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+                        "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        public static boolean isValidEmail(String email) {
+            return mailValidationPattern.matcher(email).matches();
+        }
+
+    }
+
 }

@@ -15,5 +15,7 @@ public interface FormPresenter {
 
     void validateFieldIsEmpty(CustomTextInputLayout field, String str);
 
+    void validateEmailField(String email);
+
     String formatTitleMessage(String str);
 }

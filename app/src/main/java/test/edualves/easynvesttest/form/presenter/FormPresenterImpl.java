@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import test.edualves.easynvesttest.R;
+import test.edualves.easynvesttest.Utils;
 import test.edualves.easynvesttest.form.ui.CustomTextInputLayout;
 import test.edualves.easynvesttest.form.ui.MainFormFragmentView;
 import test.edualves.easynvesttest.model.Cell;
@@ -59,6 +60,14 @@ public class FormPresenterImpl implements FormPresenter {
 
         if (StringUtils.isEmpty(str)) {
             view.setErrorMandatoryField(field);
+        }
+    }
+
+    @Override
+    public void validateEmailField(String email) {
+
+        if (!Utils.FieldValidationUtil.isValidEmail(email)){
+            view.setInvalidEmailError();
         }
     }
 

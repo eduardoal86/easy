@@ -8,4 +8,5 @@ public interface MainFormFragmentView {
 
     void setErrorMandatoryField(CustomTextInputLayout field);
 
+    void setInvalidEmailError();
 }
