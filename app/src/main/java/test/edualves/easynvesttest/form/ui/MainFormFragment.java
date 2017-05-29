@@ -96,8 +96,8 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
 
     private void setUpFields() {
 
-        nameEditText.setHint(cells.get(1).getMessage());
-        emailEditText.setHint(cells.get(3).getMessage());
+        nameTextInput.setHint(cells.get(1).getMessage());
+        emailTextInput.setHint(cells.get(3).getMessage());
 
     }
 
