@@ -32,6 +32,26 @@ public class Utils {
         return json;
     }
 
+    public static String readJsonFund(Context context) {
+
+        String json;
+
+        try {
+            InputStream inputStream = context.getResources().openRawResource(R.raw.fund);
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return json;
+    }
+
     public enum FieldValidationUtil {
         ;
         private static final Pattern mailValidationPattern = Pattern.compile(

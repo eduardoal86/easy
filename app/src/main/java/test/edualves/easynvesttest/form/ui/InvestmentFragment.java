@@ -2,6 +2,7 @@ package test.edualves.easynvesttest.form.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import test.edualves.easynvesttest.R;
+import test.edualves.easynvesttest.Utils;
 import test.edualves.easynvesttest.form.presenter.InvestmentPresenter;
 import test.edualves.easynvesttest.form.presenter.InvestmentPresenterImpl;
+import test.edualves.easynvesttest.model.Screen;
 
 /**
  * Created by edualves on 29/05/17.
@@ -35,6 +38,8 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
 
     InvestmentPresenter presenter;
 
+    Screen screen = new Screen();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
         View view = inflater.inflate(R.layout.fragment_investment_info, container, false);
@@ -42,8 +47,10 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
 
         presenter = new InvestmentPresenterImpl(this);
 
-        setUpChart();
+        Log.d("Json", "DATA: " + Utils.readJsonFund(getActivity()));
+        //screen = presenter.convertJsonToScreenObject(Utils.readJsonFund(getActivity()));
 
+        setUpChart();
 
         return view;
     }
@@ -75,15 +82,16 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
         iLineDataSets.add(dataSet);
         iLineDataSets.add(dataSet2);
 
+        //final String[] periods = new String[] { "14/04" ,"14/06", "14/08", "14/09", "14/11", "14/12" };
+        final String[] periods = new String[]{"06/2014","11/2014","01/2015", "03/2015", "07/2015", "09/2015", "01/2016", "06/2016", "12/2016", "07/2017"};
 
-        final String[] periods = new String[] { "14/07" ,"14/08", "14/09", "14/10", "14/11", "14/12" };
 
         IAxisValueFormatter formatter = presenter.setUpPeriods(periods);
 
         XAxis xAxis = lineChart.getXAxis();
 
         //To display frequency on chart
-        xAxis.setGranularity(1f);
+        xAxis.setGranularity(2f);
 
         xAxis.setValueFormatter(formatter);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
