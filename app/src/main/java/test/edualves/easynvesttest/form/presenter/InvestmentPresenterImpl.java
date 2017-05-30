@@ -1,15 +1,16 @@
 package test.edualves.easynvesttest.form.presenter;
 
-import android.util.Log;
-
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,26 +32,32 @@ public class InvestmentPresenterImpl implements InvestmentPresenter {
 
     @Override
     public Screen convertJsonToScreenObject(String json) {
-        return null;
+        Screen screen = new Screen();
+        Gson gson = new Gson();
+
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+
+            JSONObject jsonScreen = jsonObject.getJSONObject("screen");
+
+            screen = gson.fromJson(jsonScreen.toString(), Screen.class);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return screen;
+
     }
 
-    //TODO receive (float)
     @Override
-    public List<Entry> setValuesToLineChart() {
+    public List<Entry> setValuesToLineChart(List<Float> values) {
 
         List<Entry> entries = new ArrayList<>();
 
-        //TODO second parameter of Entry is that float parameter
-        entries.add(new Entry(0, 1500));
-        entries.add(new Entry(1, 2000));
-        entries.add(new Entry(2, 3000));
-        entries.add(new Entry(3, 4000));
-        entries.add(new Entry(4, 5000));
-        entries.add(new Entry(5, 6000));
-        entries.add(new Entry(6, 7000));
-        entries.add(new Entry(7, 8000));
-        entries.add(new Entry(8, 9000));
-        entries.add(new Entry(9, 10000));
+        for (int i = 0; i < values.size(); i++) {
+            entries.add(new Entry(i, values.get(i)));
+        }
 
         return entries;
     }

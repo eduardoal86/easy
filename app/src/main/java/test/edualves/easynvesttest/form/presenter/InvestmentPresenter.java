@@ -15,7 +15,7 @@ public interface InvestmentPresenter {
 
     Screen convertJsonToScreenObject(String json);
 
-    List<Entry> setValuesToLineChart();
+    List<Entry> setValuesToLineChart(List<Float> values);
 
     IAxisValueFormatter setUpPeriods(final String[] periods);
 }

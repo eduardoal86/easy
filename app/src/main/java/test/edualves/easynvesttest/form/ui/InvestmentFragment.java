@@ -47,8 +47,7 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
 
         presenter = new InvestmentPresenterImpl(this);
 
-        Log.d("Json", "DATA: " + Utils.readJsonFund(getActivity()));
-        //screen = presenter.convertJsonToScreenObject(Utils.readJsonFund(getActivity()));
+        screen = presenter.convertJsonToScreenObject(Utils.readJsonFund(getActivity()));
 
         setUpChart();
 
@@ -57,21 +56,17 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
 
     private void setUpChart() {
 
-        //TODO pass here values as parameter
-        List<Entry> entries = presenter.setValuesToLineChart();
-        //TODO pass here values as parameter
-        List<Entry> entries2 = presenter.setValuesToLineChart();
+        List<Entry> entries = presenter.setValuesToLineChart(screen.getGraph().getCdiValues());
+        List<Entry> entries2 = presenter.setValuesToLineChart(screen.getGraph().getFundValues());
 
-        //TODO move nameFund to StringValues
-        LineDataSet dataSet = new LineDataSet(entries, "CDI"); // add entries to dataset
+        LineDataSet dataSet = new LineDataSet(entries, getResources().getString(R.string.fund_market));
         dataSet.setColor(R.color.AuroMetalSaurus);
         dataSet.setDrawValues(false);
         dataSet.setDrawCircles(false);
         dataSet.setLineWidth(2);
         dataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
 
-        //TODO move nameFund to StringValues
-        LineDataSet dataSet2 = new LineDataSet(entries2, "CDB"); // add entries to dataset
+        LineDataSet dataSet2 = new LineDataSet(entries2, screen.getFundName());
         dataSet2.setColor(R.color.purple);
         dataSet2.setDrawValues(false);
         dataSet2.setDrawCircles(false);
@@ -82,9 +77,7 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
         iLineDataSets.add(dataSet);
         iLineDataSets.add(dataSet2);
 
-        //final String[] periods = new String[] { "14/04" ,"14/06", "14/08", "14/09", "14/11", "14/12" };
-        final String[] periods = new String[]{"06/2014","11/2014","01/2015", "03/2015", "07/2015", "09/2015", "01/2016", "06/2016", "12/2016", "07/2017"};
-
+        final String[] periods = screen.getGraph().getxValues().toArray(new String[0]);
 
         IAxisValueFormatter formatter = presenter.setUpPeriods(periods);
 
