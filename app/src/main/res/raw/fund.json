@@ -6,7 +6,7 @@
   		"definition": "O Fundo tem por objetivo proporcionar aos seus cotistas rentabilidade no longo prazo através de investimentos.",
   		"graph": {
   			"CDI": [0, 4.5, 5, 7.5, 9.0, 10, 11.7, 12.5, 13.8, 14.3, 15.1],
-  			"fund": [0, 5.0, 6.0, 8.5, 10, 11.5, 14.5, 15.0, 16.9, 18.0],
+  			"fund": [0, 5.0, 6.0, 8.5, 10, 11.5, 14.5, 15.0, 16.9, 18.0, 19.5],
   			"x": ["11/2014", "06/2015", "07/2016"]
   		},
   		"riskTitle": "Grau de risco do investimento",

@@ -33,4 +33,12 @@ public class MainFormActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, initialSuccessFragment)
                 .commit();
     }
+
+    public void showInvestmentScreen() {
+        InvestmentFragment investmentFragment = new InvestmentFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, investmentFragment)
+                .commit();
+    }
 }

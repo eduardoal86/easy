@@ -19,7 +19,7 @@
     <color name="e6e6e6">#e6e6e6</color>
     <color name="White">#FFFFFF</color>
     <color name="WhiteGray">#bbbbbb</color>
-    <color name="teste1">#00ff00</color>
-    <color name="teste2">#ff0000</color>
+    <color name="purple">#342A8B</color>
+    <color name="light_blue">#42DADA</color>
     <color name="checkedMenuItem">#32FFFFFF</color>
 </resources>
