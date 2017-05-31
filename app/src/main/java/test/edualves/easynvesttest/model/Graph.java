@@ -13,13 +13,13 @@ import java.util.List;
 public class Graph implements Serializable {
 
     @SerializedName("CDI")
-    List<Float> cdiValues = new ArrayList<>();
+    List<Float> cdiValues;
 
     @SerializedName("fund")
-    List<Float> fundValues = new ArrayList<>();
+    List<Float> fundValues;
 
     @SerializedName("x")
-    List<String> xValues = new ArrayList<>();
+    List<String> xValues;
 
     public List<Float> getCdiValues() {
         return cdiValues;

@@ -1,14 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_line"
-        android:layout_width="320dp"
-        android:layout_height="200dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
 
-    </com.github.mikephil.charting.charts.LineChart>
+        <RelativeLayout
+            android:id="@+id/header_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/investment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text="@string/title_screen_investment"
+                android:textColor="@color/BlackFont"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/title_investments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/investment_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/GrayFont"
+                android:textSize="14sp"
+                tools:text="Fundos de Investimento" />
+
+            <TextView
+                android:id="@+id/fund_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_investments"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/BlackFont"
+                android:textSize="28sp"
+                tools:text="Vinci Valorem FI\nMultimercado" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/description_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/header_container">
+
+            <ImageView
+                android:id="@+id/separator_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/separador"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/description_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/separator_top"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/GrayFont"
+                tools:text="O que é?"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/description_title"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/GrayFont"
+                tools:text="O Fundo tem por objetivo proporcionar\naos seus cotistas rentabilidade no longo\nprazo através de investimentos."
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_line"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/description_container">
+
+        </com.github.mikephil.charting.charts.LineChart>
+
+        <RelativeLayout
+            android:id="@+id/bar_chart_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_below="@id/chart_line">
+
+            <TextView
+                android:id="@+id/risk_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/BlueFont"
+                tools:text="Grau de risco do investimento"
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"/>
+
+
+
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/more_info_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/bar_chart_container">
+
+
+
+            <include layout="@layout/more_info_about_investment_layout"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
