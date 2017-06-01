@@ -16,4 +16,7 @@
     <string name="at_year_label">No ano</string>
     <string name="at_twelve_months_label">12 meses</string>
     <string name="baixar_label">Baixar</string>
+    <string name="text_menu_contact">Contato</string>
+    <string name="text_menu_investment">Investimento</string>
+    <string name="btn_invest_title">Investir</string>
 </resources>

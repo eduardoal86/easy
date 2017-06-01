@@ -1,9 +1,11 @@
 package test.edualves.easynvesttest.form.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import test.edualves.easynvesttest.R;
+import test.edualves.easynvesttest.investment.ui.InvestmentActivity;
 
 public class MainFormActivity extends AppCompatActivity {
 
@@ -35,10 +37,7 @@ public class MainFormActivity extends AppCompatActivity {
     }
 
     public void showInvestmentScreen() {
-        InvestmentFragment investmentFragment = new InvestmentFragment();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, investmentFragment)
-                .commit();
+        Intent intent = new Intent(this, InvestmentActivity.class);
+        startActivity(intent);
     }
 }

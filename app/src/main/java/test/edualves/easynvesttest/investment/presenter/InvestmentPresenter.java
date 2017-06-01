@@ -1,4 +1,4 @@
-package test.edualves.easynvesttest.form.presenter;
+package test.edualves.easynvesttest.investment.presenter;
 
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;

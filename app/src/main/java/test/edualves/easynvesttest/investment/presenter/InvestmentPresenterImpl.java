@@ -1,4 +1,4 @@
-package test.edualves.easynvesttest.form.presenter;
+package test.edualves.easynvesttest.investment.presenter;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.data.Entry;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import test.edualves.easynvesttest.form.ui.InvestmentView;
+import test.edualves.easynvesttest.investment.ui.InvestmentView;
 import test.edualves.easynvesttest.model.Screen;
 
 /**
