@@ -114,6 +114,21 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
     @BindView(R.id.payment_value)
     TextView paymentValue;
 
+    @BindView(R.id.essentials_label)
+    TextView essentialsLabel;
+
+    @BindView(R.id.performance_label)
+    TextView performanceLabel;
+
+    @BindView(R.id.complementary_label)
+    TextView complementaryLabel;
+
+    @BindView(R.id.rules_label)
+    TextView rulesLabel;
+
+    @BindView(R.id.accession_label)
+    TextView accessionLabel;
+
     InvestmentPresenter presenter;
 
     Screen screen = new Screen();
@@ -240,5 +255,10 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
         feeValue.setText(screen.getInfos().get(5).getData());
         paymentLabel.setText(screen.getInfos().get(6).getName());
         paymentValue.setText(screen.getInfos().get(6).getData());
+        essentialsLabel.setText(screen.getDownInfos().get(0).getName());
+        performanceLabel.setText(screen.getDownInfos().get(1).getName());
+        complementaryLabel.setText(screen.getDownInfos().get(2).getName());
+        rulesLabel.setText(screen.getDownInfos().get(3).getName());
+        accessionLabel.setText(screen.getDownInfos().get(4).getName());
     }
 }

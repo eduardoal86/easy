@@ -15,4 +15,5 @@
     <string name="at_month_label">No mês</string>
     <string name="at_year_label">No ano</string>
     <string name="at_twelve_months_label">12 meses</string>
+    <string name="baixar_label">Baixar</string>
 </resources>
