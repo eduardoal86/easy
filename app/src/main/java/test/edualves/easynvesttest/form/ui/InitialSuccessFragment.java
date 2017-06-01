@@ -26,6 +26,6 @@ public class InitialSuccessFragment extends Fragment {
 
     @OnClick(R.id.next_investments)
     void goToInvestments() {
-
+        ((MainFormActivity) getActivity()).showInvestmentScreen();
     }
 }

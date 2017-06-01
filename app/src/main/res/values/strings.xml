@@ -8,4 +8,15 @@
     <string name="invalid_email_error">Email inválido</string>
     <string name="success_title">Obrigado pelas informações!</string>
     <string name="btn_success_title">Vamos investir!</string>
+    <string name="fund_market">CDI</string>
+    <string name="title_screen_investment">Investimento</string>
+    <string name="fundo">Fundo</string>
+    <string name="cdi_label">CDI</string>
+    <string name="at_month_label">No mês</string>
+    <string name="at_year_label">No ano</string>
+    <string name="at_twelve_months_label">12 meses</string>
+    <string name="baixar_label">Baixar</string>
+    <string name="text_menu_contact">Contato</string>
+    <string name="text_menu_investment">Investimento</string>
+    <string name="btn_invest_title">Investir</string>
 </resources>

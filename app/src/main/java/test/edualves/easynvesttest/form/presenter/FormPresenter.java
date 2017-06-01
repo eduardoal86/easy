@@ -17,5 +17,4 @@ public interface FormPresenter {
 
     boolean validateEmailField(String email);
 
-    String formatTitleMessage(String str);
 }

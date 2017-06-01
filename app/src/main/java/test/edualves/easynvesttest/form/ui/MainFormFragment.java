@@ -90,7 +90,7 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     }
 
     private void formatTitleMessage() {
-        titleMessage.setText(presenter.formatTitleMessage(titleMsg));
+        titleMessage.setText(Utils.countCharsForSpace(titleMsg, 27));
     }
 
     private void setUpFields() {

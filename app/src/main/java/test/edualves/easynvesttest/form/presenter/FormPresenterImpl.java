@@ -1,7 +1,5 @@
 package test.edualves.easynvesttest.form.presenter;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
@@ -9,12 +7,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import test.edualves.easynvesttest.R;
 import test.edualves.easynvesttest.Utils;
 import test.edualves.easynvesttest.form.ui.CustomTextInputLayout;
 import test.edualves.easynvesttest.form.ui.MainFormFragmentView;
@@ -73,17 +68,4 @@ public class FormPresenterImpl implements FormPresenter {
         return true;
     }
 
-    @Override
-    public String formatTitleMessage(String msg) {
-
-        StringBuilder stringBuilder = new StringBuilder(msg);
-
-        int i = 0;
-        while ((i = stringBuilder.indexOf(" ", i + 27)) != -1) {
-
-            stringBuilder.replace(i, i + 1, "\n");
-        }
-
-        return stringBuilder.toString();
-    }
 }
