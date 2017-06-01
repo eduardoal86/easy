@@ -2,10 +2,10 @@ package test.edualves.easynvesttest.form.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -36,6 +36,84 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
     @BindView(R.id.chart_line)
     LineChart lineChart;
 
+    @BindView(R.id.title_investments)
+    TextView titleInvestment;
+
+    @BindView(R.id.fund_name)
+    TextView fundName;
+
+    @BindView(R.id.description_title)
+    TextView whatIsTitle;
+
+    @BindView(R.id.description_text)
+    TextView descriptionText;
+
+    @BindView(R.id.risk_title)
+    TextView riskTitle;
+
+    @BindView(R.id.more_info_title)
+    TextView infoTitle;
+
+    @BindView(R.id.fund_month_value)
+    TextView fundMonthValue;
+
+    @BindView(R.id.cdi_month_value)
+    TextView cdiMonthValue;
+
+    @BindView(R.id.fund_year_value)
+    TextView fundYearValue;
+
+    @BindView(R.id.cdi_year_value)
+    TextView cdiYearValue;
+
+    @BindView(R.id.fund_twelve_value)
+    TextView fundTwelveValue;
+
+    @BindView(R.id.cdi_twelve_value)
+    TextView cdiTwelveValue;
+
+    @BindView(R.id.admin_tax_label)
+    TextView adminTaxLabel;
+
+    @BindView(R.id.admin_tax_value)
+    TextView adminTaxValue;
+
+    @BindView(R.id.start_apply_label)
+    TextView startApplyLabel;
+
+    @BindView(R.id.start_apply_value)
+    TextView startApplyValue;
+
+    @BindView(R.id.minimum_move_label)
+    TextView minimumMoveLabel;
+
+    @BindView(R.id.minimum_move_value)
+    TextView minimumMoveValue;
+
+    @BindView(R.id.minimum_balance_label)
+    TextView minimumBalanceLabel;
+
+    @BindView(R.id.minimum_balance_value)
+    TextView minimumBalanceValue;
+
+    @BindView(R.id.withdraw_label)
+    TextView withdrawLabel;
+
+    @BindView(R.id.withdraw_value)
+    TextView withdrawValue;
+
+    @BindView(R.id.fee_label)
+    TextView feeLabel;
+
+    @BindView(R.id.fee_value)
+    TextView feeValue;
+
+    @BindView(R.id.payment_label)
+    TextView paymentLabel;
+
+    @BindView(R.id.payment_value)
+    TextView paymentValue;
+
     InvestmentPresenter presenter;
 
     Screen screen = new Screen();
@@ -49,12 +127,23 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
 
         screen = presenter.convertJsonToScreenObject(Utils.readJsonFund(getActivity()));
 
-        setUpChart();
+        setUpTitleDesc();
+        setUpLineChart();
+        setUpBarChart();
+        setUpMoreInfoAboutInvestment();
+        setInfoAboutInvestment();
 
         return view;
     }
 
-    private void setUpChart() {
+    private void setUpTitleDesc() {
+        titleInvestment.setText(screen.getTitle());
+        fundName.setText(Utils.countCharsForSpace(screen.getFundName(), 17));
+        whatIsTitle.setText(screen.getWhatIs());
+        descriptionText.setText(Utils.countCharsForSpace(screen.getDefinition(), 42));
+    }
+
+    private void setUpLineChart() {
 
         List<Entry> entries = presenter.setValuesToLineChart(screen.getGraph().getCdiValues());
         List<Entry> entries2 = presenter.setValuesToLineChart(screen.getGraph().getFundValues());
@@ -117,5 +206,39 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
 
         lineChart.invalidate();
 
+    }
+
+    private void setUpBarChart() {
+
+        riskTitle.setText(screen.getRiskTitle());
+        //TODO insert barChar HERE
+    }
+
+    private void setUpMoreInfoAboutInvestment() {
+        infoTitle.setText(screen.getInfoTitle());
+        fundMonthValue.setText(screen.getMoreInfo().getMonth().getFund().toString());
+        cdiMonthValue.setText(screen.getMoreInfo().getMonth().getCdi().toString());
+        fundYearValue.setText(screen.getMoreInfo().getYear().getFund().toString());
+        cdiYearValue.setText(screen.getMoreInfo().getYear().getCdi().toString());
+        fundTwelveValue.setText(screen.getMoreInfo().getTwelveMonths().getFund().toString());
+        cdiTwelveValue.setText(screen.getMoreInfo().getTwelveMonths().getCdi().toString());
+    }
+
+    private void setInfoAboutInvestment() {
+        //This getInfos array has 7 positions(Starting at 0)
+        adminTaxLabel.setText(screen.getInfos().get(0).getName());
+        adminTaxValue.setText(screen.getInfos().get(0).getData());
+        startApplyLabel.setText(screen.getInfos().get(1).getName());
+        startApplyValue.setText(screen.getInfos().get(1).getData());
+        minimumMoveLabel.setText(screen.getInfos().get(2).getName());
+        minimumMoveValue.setText(screen.getInfos().get(2).getData());
+        minimumBalanceLabel.setText(screen.getInfos().get(3).getName());
+        minimumBalanceValue.setText(screen.getInfos().get(3).getData());
+        withdrawLabel.setText(screen.getInfos().get(4).getName());
+        withdrawValue.setText(screen.getInfos().get(4).getData());
+        feeLabel.setText(screen.getInfos().get(5).getName());
+        feeValue.setText(screen.getInfos().get(5).getData());
+        paymentLabel.setText(screen.getInfos().get(6).getName());
+        paymentValue.setText(screen.getInfos().get(6).getData());
     }
 }

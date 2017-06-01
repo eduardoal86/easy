@@ -23,4 +23,12 @@ public class TwelveMonths implements Serializable{
     public void setFund(Float fund) {
         this.fund = fund;
     }
+
+    public Float getCdi() {
+        return cdi;
+    }
+
+    public void setCdi(Float cdi) {
+        this.cdi = cdi;
+    }
 }

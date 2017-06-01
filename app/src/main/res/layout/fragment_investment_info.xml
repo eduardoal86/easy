@@ -72,6 +72,7 @@
                 android:layout_below="@id/separator_top"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
+                android:textStyle="bold"
                 android:textColor="@color/GrayFont"
                 tools:text="O que é?"
                 android:textSize="16sp"/>
@@ -115,20 +116,15 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="16sp"/>
 
-
-
         </RelativeLayout>
         
         <RelativeLayout
             android:id="@+id/more_info_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_below="@id/bar_chart_container">
 
-
-
-            <include layout="@layout/more_info_about_investment_layout"/>
+            <include layout="@layout/more_info_investment_layout"/>
 
         </RelativeLayout>
 

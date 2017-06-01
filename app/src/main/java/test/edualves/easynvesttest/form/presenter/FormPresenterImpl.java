@@ -68,17 +68,4 @@ public class FormPresenterImpl implements FormPresenter {
         return true;
     }
 
-    @Override
-    public String formatTitleMessage(String msg) {
-
-        StringBuilder stringBuilder = new StringBuilder(msg);
-
-        int i = 0;
-        while ((i = stringBuilder.indexOf(" ", i + 27)) != -1) {
-
-            stringBuilder.replace(i, i + 1, "\n");
-        }
-
-        return stringBuilder.toString();
-    }
 }
