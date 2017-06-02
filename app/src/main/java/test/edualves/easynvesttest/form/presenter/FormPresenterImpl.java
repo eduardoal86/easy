@@ -10,8 +10,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import test.edualves.easynvesttest.Utils;
-import test.edualves.easynvesttest.form.ui.CustomTextInputLayout;
+import test.edualves.easynvesttest.utils.Utils;
+import test.edualves.easynvesttest.utils.CustomTextInputLayout;
 import test.edualves.easynvesttest.form.ui.MainFormFragmentView;
 import test.edualves.easynvesttest.model.Cell;
 

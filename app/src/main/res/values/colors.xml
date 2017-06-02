@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#4990E2</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryDark">#3B79BF</color>
     <color name="colorAccent">#10a3c1</color>
     <color name="AuroMetalSaurus">#777777</color>
     <color name="GrayFont">#7E7E7E</color>

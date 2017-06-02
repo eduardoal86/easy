@@ -39,7 +39,7 @@ public class InvestmentActivity extends AppCompatActivity {
                     case R.id.action_contact:
                         break;
                 }
-                return false;
+                return true;
             }
 
         });

@@ -2,7 +2,7 @@ package test.edualves.easynvesttest.form.presenter;
 
 import java.util.List;
 
-import test.edualves.easynvesttest.form.ui.CustomTextInputLayout;
+import test.edualves.easynvesttest.utils.CustomTextInputLayout;
 import test.edualves.easynvesttest.model.Cell;
 
 /**

@@ -1,11 +1,8 @@
 package test.edualves.easynvesttest.investment.ui;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import test.edualves.easynvesttest.R;
-import test.edualves.easynvesttest.Utils;
+import test.edualves.easynvesttest.utils.Utils;
 import test.edualves.easynvesttest.investment.presenter.InvestmentPresenter;
 import test.edualves.easynvesttest.investment.presenter.InvestmentPresenterImpl;
 import test.edualves.easynvesttest.model.Screen;

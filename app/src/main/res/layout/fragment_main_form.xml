@@ -24,7 +24,7 @@
         tools:layout_constraintRight_creator="1"
         tools:text="Olá, primeiro se apresente\n com o seu nome:" />
 
-    <test.edualves.easynvesttest.form.ui.CustomTextInputLayout
+    <test.edualves.easynvesttest.utils.CustomTextInputLayout
         android:id="@+id/email_text_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             android:maxLines="1"
             tools:hint="@string/email_label_form" />
 
-    </test.edualves.easynvesttest.form.ui.CustomTextInputLayout>
+    </test.edualves.easynvesttest.utils.CustomTextInputLayout>
 
     <CheckBox
         android:id="@+id/checkbox_email"
@@ -96,7 +96,7 @@
 
     </RelativeLayout>
 
-    <test.edualves.easynvesttest.form.ui.CustomTextInputLayout
+    <test.edualves.easynvesttest.utils.CustomTextInputLayout
         android:id="@+id/name_text_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
             android:maxLines="1"
             tools:hint="@string/name_label_form" />
 
-    </test.edualves.easynvesttest.form.ui.CustomTextInputLayout>
+    </test.edualves.easynvesttest.utils.CustomTextInputLayout>
 
     <ImageView
         android:id="@+id/name_clear"
