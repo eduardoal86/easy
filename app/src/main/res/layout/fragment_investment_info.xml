@@ -114,8 +114,18 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/BlueFont"
+                android:layout_marginBottom="20dp"
                 android:textSize="16sp"
                 tools:text="Grau de risco do investimento" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_chart"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/risk_title">
+
+
+            </com.github.mikephil.charting.charts.BarChart>
 
         </RelativeLayout>
 

@@ -7,14 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +28,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import test.edualves.easynvesttest.R;
-import test.edualves.easynvesttest.utils.Utils;
 import test.edualves.easynvesttest.investment.presenter.InvestmentPresenter;
 import test.edualves.easynvesttest.investment.presenter.InvestmentPresenterImpl;
 import test.edualves.easynvesttest.model.Screen;
+import test.edualves.easynvesttest.utils.Utils;
 
 /**
  * Created by edualves on 29/05/17.
@@ -129,9 +135,15 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
     @BindView(R.id.accession_label)
     TextView accessionLabel;
 
+    @BindView(R.id.bar_chart)
+    BarChart barChart;
+
     InvestmentPresenter presenter;
 
-    Screen screen = new Screen();
+    private Screen screen = new Screen();
+
+    private List<BarEntry> barEntries;
+    private List<String> barLabels;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -164,15 +176,17 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
         List<Entry> entries2 = presenter.setValuesToLineChart(screen.getGraph().getFundValues());
 
         LineDataSet dataSet = new LineDataSet(entries, getResources().getString(R.string.fund_market));
-        dataSet.setColor(R.color.AuroMetalSaurus);
+        dataSet.setColor(ColorTemplate.rgb("#42DADA"));
         dataSet.setDrawValues(false);
         dataSet.setDrawCircles(false);
+        dataSet.setForm(Legend.LegendForm.CIRCLE);
         dataSet.setLineWidth(2);
         dataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
 
         LineDataSet dataSet2 = new LineDataSet(entries2, screen.getFundName());
         dataSet2.setColor(R.color.purple);
         dataSet2.setDrawValues(false);
+        dataSet2.setForm(Legend.LegendForm.CIRCLE);
         dataSet2.setDrawCircles(false);
         dataSet2.setLineWidth(2);
         dataSet2.setAxisDependency(YAxis.AxisDependency.LEFT);
@@ -226,8 +240,59 @@ public class InvestmentFragment extends Fragment implements InvestmentView {
     private void setUpBarChart() {
 
         riskTitle.setText(screen.getRiskTitle());
-        //TODO insert barChar HERE
+        barEntries = new ArrayList<>();
+        barLabels = new ArrayList<>();
+
+        addBarEntries();
+        addBarLabels();
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Análise de risco");
+        barDataSet.setForm(Legend.LegendForm.CIRCLE);
+        barDataSet.setDrawValues(false);
+        barDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
+        barDataSet.setAxisDependency(YAxis.AxisDependency.RIGHT);
+
+
+        BarData barData = new BarData(barDataSet);
+        barData.setBarWidth(0.9f);
+
+        barChart.setData(barData);
+
+        barChart.setFitBars(true);
+
+        barChart.getDescription().setEnabled(false);
+        barChart.setDrawValueAboveBar(false);
+        barChart.setDrawGridBackground(false);
+        barChart.setPinchZoom(false);
+        barChart.setScaleEnabled(false);
+        barChart.setTouchEnabled(false);
+        barChart.getAxisLeft().setEnabled(true);
+        barChart.getAxisRight().setEnabled(false);
+        barChart.getAxisRight().setDrawAxisLine(false);
+        barChart.getAxisRight().setDrawGridLines(true);
+        barChart.getXAxis().setDrawAxisLine(false);
+        barChart.getXAxis().setDrawGridLines(false);
+
+        barChart.invalidate();
+
     }
+
+    private void addBarLabels() {
+        barLabels.add("");
+        barLabels.add("");
+        barLabels.add("");
+        barLabels.add("");
+        barLabels.add("");
+    }
+
+    private void addBarEntries() {
+        barEntries.add(new BarEntry(1f, 1));
+        barEntries.add(new BarEntry(2f, 1));
+        barEntries.add(new BarEntry(3f, 1));
+        barEntries.add(new BarEntry(4f, 2));
+        barEntries.add(new BarEntry(5f, 1));
+    }
+
+
 
     private void setUpMoreInfoAboutInvestment() {
         infoTitle.setText(screen.getInfoTitle());
