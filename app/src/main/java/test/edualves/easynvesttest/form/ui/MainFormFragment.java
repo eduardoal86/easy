@@ -133,6 +133,11 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
         nameEditText.setText("");
     }
 
+    @OnClick(R.id.email_clear)
+    void clearContentEmailInput() {
+        emailEditText.setText("");
+    }
+
     @Override
     public void setErrorMandatoryField(CustomTextInputLayout field) {
         field.setError(getResources().getString(R.string.mandatory_field));

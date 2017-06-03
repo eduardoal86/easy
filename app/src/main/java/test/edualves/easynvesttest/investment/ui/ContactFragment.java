@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import test.edualves.easynvesttest.R;
 import test.edualves.easynvesttest.investment.presenter.ContactPresenter;
 import test.edualves.easynvesttest.investment.presenter.ContactPresenterImpl;
@@ -38,6 +40,12 @@ public class ContactFragment extends Fragment {
     @BindView(R.id.checkbox_email)
     CheckBox checkboxEmail;
 
+    @BindView(R.id.form_contact_container)
+    RelativeLayout formContactLayout;
+
+    @BindView(R.id.contact_success_container)
+    RelativeLayout contactSuccessLayout;
+
     private List<Cell> cells = new ArrayList<>();
     ContactPresenter presenter;
 
@@ -62,4 +70,19 @@ public class ContactFragment extends Fragment {
         phoneTextInput.setHint(cells.get(5).getMessage());
 
     }
+
+    @OnClick(R.id.send_message)
+    void clickOnSendMessage() {
+        formContactLayout.setVisibility(View.GONE);
+        contactSuccessLayout.setVisibility(View.VISIBLE);
+
+    }
+
+    @OnClick(R.id.send_new_message)
+    void sendNewMessage() {
+        contactSuccessLayout.setVisibility(View.GONE);
+        formContactLayout.setVisibility(View.VISIBLE);
+    }
+
+    //TODO Missing validate fields contact form
 }
