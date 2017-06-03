@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import test.edualves.easynvesttest.service.CellService;
+import test.edualves.easynvesttest.service.CellServiceImpl;
 import test.edualves.easynvesttest.utils.Utils;
 import test.edualves.easynvesttest.utils.CustomTextInputLayout;
 import test.edualves.easynvesttest.form.ui.MainFormFragmentView;
@@ -23,6 +25,8 @@ public class FormPresenterImpl implements FormPresenter {
 
     private final MainFormFragmentView view;
 
+    private CellService service = new CellServiceImpl();
+
     public FormPresenterImpl(MainFormFragmentView view) {
         this.view = view;
     }
@@ -30,24 +34,7 @@ public class FormPresenterImpl implements FormPresenter {
     @Override
     public List<Cell> convertStringJsonToCellsObject(String json) {
 
-        List<Cell> cells = new ArrayList<>();
-        Gson gson = new Gson();
-
-        try {
-            JSONObject jsonObject = new JSONObject(json);
-            JSONArray jsonArray = jsonObject.getJSONArray("cells");
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject exploreObject = jsonArray.getJSONObject(i);
-                cells.add(i, gson.fromJson(exploreObject.toString(), Cell.class));
-            }
-
-            return cells;
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return service.getCells(json);
     }
 
     @Override

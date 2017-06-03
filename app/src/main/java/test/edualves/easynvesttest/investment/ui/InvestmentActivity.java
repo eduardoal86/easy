@@ -21,6 +21,9 @@ public class InvestmentActivity extends AppCompatActivity {
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
 
+    InvestmentFragment investmentFragment = new InvestmentFragment();
+    ContactFragment contactFragment = new ContactFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +37,10 @@ public class InvestmentActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_investment:
-                        //bottomNavigationView.setItemIconTintList();
+                        showInvestmentScreen();
                         break;
                     case R.id.action_contact:
+                        showContactFragment();
                         break;
                 }
                 return true;
@@ -45,8 +49,24 @@ public class InvestmentActivity extends AppCompatActivity {
         });
     }
 
+    private void showContactFragment() {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_investment, contactFragment)
+                .commit();
+    }
+
+    private void showInvestmentScreen() {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_investment, investmentFragment)
+                .commit();
+    }
+
     public void goInvestmentScreen() {
-        InvestmentFragment investmentFragment = new InvestmentFragment();
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_investment, investmentFragment)
