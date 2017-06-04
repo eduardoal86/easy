@@ -12,7 +12,7 @@ import test.edualves.easynvesttest.model.Cell;
 public interface FormPresenter {
 
     //TODO Extract to another interface just to read this jSON
-    List<Cell> convertStringJsonToCellsObject(String json);
+    List<Cell> getCells(String json);
 
     void validateFieldIsEmpty(CustomTextInputLayout field, String str);
 

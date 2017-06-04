@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/contact_title"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/thanks_title"
@@ -68,7 +68,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="40dp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <test.edualves.easynvesttest.utils.CustomTextInputLayout
                 android:id="@+id/name_text_input"

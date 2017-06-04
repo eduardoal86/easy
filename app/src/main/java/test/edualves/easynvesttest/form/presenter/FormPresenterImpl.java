@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import test.edualves.easynvesttest.investment.ui.ContactView;
 import test.edualves.easynvesttest.service.CellService;
 import test.edualves.easynvesttest.service.CellServiceImpl;
 import test.edualves.easynvesttest.utils.Utils;
@@ -32,7 +33,7 @@ public class FormPresenterImpl implements FormPresenter {
     }
 
     @Override
-    public List<Cell> convertStringJsonToCellsObject(String json) {
+    public List<Cell> getCells(String json) {
 
         return service.getCells(json);
     }
@@ -48,7 +49,7 @@ public class FormPresenterImpl implements FormPresenter {
     @Override
     public boolean validateEmailField(String email) {
 
-        if (!Utils.FieldValidationUtil.isValidEmail(email)){
+        if (!Utils.FieldValidationUtil.isValidEmail(email)) {
             view.setInvalidEmailError();
             return false;
         }

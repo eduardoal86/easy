@@ -57,7 +57,7 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
 
         presenter = new FormPresenterImpl(this);
 
-        cells = presenter.convertStringJsonToCellsObject(Utils.readJsonCells(getActivity()));
+        cells = presenter.getCells(Utils.readJsonCells(getActivity()));
 
         setUpConfigs();
 
@@ -118,7 +118,10 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
         for (Map.Entry<CustomTextInputLayout, Cell> fields : fieldsMap.entrySet()) {
 
             if (fields.getValue().getRequired()) {
-                presenter.validateFieldIsEmpty(fields.getKey(), fields.getKey().getEditText().getText().toString());
+                presenter.validateFieldIsEmpty(fields.getKey(), fields.getKey()
+                        .getEditText()
+                        .getText()
+                        .toString());
             }
         }
 
