@@ -97,4 +97,24 @@ public class Cell implements Serializable {
     public void setRequired(Boolean required) {
         isRequired = required;
     }
+
+    public enum Type {
+        FIELD(1), TEXT(2), IMAGE(3), CHECKBOX(4), SEND(5);
+
+        public int type;
+
+        Type(int typeValue) {
+            this.type = typeValue;
+        }
+    }
+
+    public enum TypeField {
+        TEXT(1), TELNUMBER(2), EMAIL(3);
+
+        public int typeField;
+
+        TypeField(int fieldValue) {
+            this.typeField = fieldValue;
+        }
+    }
 }

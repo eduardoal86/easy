@@ -81,11 +81,9 @@ public class ContactFragment extends Fragment implements ContactView {
 
     private void setUpConfigs() {
 
-        //TODO Use different Structure for store this
         for (int i = 0; i < cells.size(); i++) {
 
-            //TODO Change 1 for Enum value
-            if (cells.get(i).getType() == 1) {
+            if (Cell.TypeField.TEXT.typeField == cells.get(i).getType()) {
                 if (cells.get(i).getMessage().startsWith("Nome")) {
                     fieldsMap.put(nameTextInput, cells.get(i));
                 } else if (cells.get(i).getMessage().startsWith("Email")) {

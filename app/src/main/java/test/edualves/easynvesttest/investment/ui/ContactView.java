@@ -7,8 +7,8 @@ import test.edualves.easynvesttest.utils.CustomTextInputLayout;
  */
 
 public interface ContactView {
-
     void setErrorMandatoryField(CustomTextInputLayout field);
 
     void setInvalidEmailError();
+
 }

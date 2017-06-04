@@ -18,7 +18,7 @@ import test.edualves.easynvesttest.utils.Utils;
 
 public class ContactPresenterImpl implements FormPresenter {
 
-    private final ContactView view;
+    private ContactView view;
 
     CellService service = new CellServiceImpl();
 
