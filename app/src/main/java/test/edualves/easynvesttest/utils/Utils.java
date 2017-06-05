@@ -1,10 +1,12 @@
-package test.edualves.easynvesttest;
+package test.edualves.easynvesttest.utils;
 
 import android.content.Context;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.regex.Pattern;
+
+import test.edualves.easynvesttest.R;
 
 /**
  * Created by edualves on 28/05/17.

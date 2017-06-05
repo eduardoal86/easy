@@ -1,40 +1,33 @@
-package test.edualves.easynvesttest.form.presenter;
-
-import com.google.gson.Gson;
+package test.edualves.easynvesttest.investment.presenter;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import test.edualves.easynvesttest.form.presenter.FormPresenter;
 import test.edualves.easynvesttest.investment.ui.ContactView;
+import test.edualves.easynvesttest.model.Cell;
 import test.edualves.easynvesttest.service.CellService;
 import test.edualves.easynvesttest.service.CellServiceImpl;
-import test.edualves.easynvesttest.utils.Utils;
 import test.edualves.easynvesttest.utils.CustomTextInputLayout;
-import test.edualves.easynvesttest.form.ui.MainFormFragmentView;
-import test.edualves.easynvesttest.model.Cell;
+import test.edualves.easynvesttest.utils.Utils;
 
 /**
- * Created by edualves on 26/05/17.
+ * Created by edualves on 02/06/17.
  */
 
-public class FormPresenterImpl implements FormPresenter {
+public class ContactPresenterImpl implements FormPresenter {
 
-    private final MainFormFragmentView view;
+    private ContactView view;
 
-    private CellService service = new CellServiceImpl();
+    CellService service = new CellServiceImpl();
 
-    public FormPresenterImpl(MainFormFragmentView view) {
+    public  ContactPresenterImpl(ContactView view) {
         this.view = view;
     }
 
     @Override
     public List<Cell> getCells(String json) {
-
         return service.getCells(json);
     }
 
@@ -55,5 +48,4 @@ public class FormPresenterImpl implements FormPresenter {
         }
         return true;
     }
-
 }

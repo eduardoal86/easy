@@ -56,7 +56,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/header_container"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp">
 
             <ImageView
                 android:id="@+id/separator_top"
@@ -87,7 +89,7 @@
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:textColor="@color/GrayFont"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 tools:text="O Fundo tem por objetivo proporcionar\naos seus cotistas rentabilidade no longo\nprazo através de investimentos." />
 
         </RelativeLayout>
@@ -97,7 +99,9 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_below="@id/description_container"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginLeft="22dp">
 
         </com.github.mikephil.charting.charts.LineChart>
 
@@ -114,8 +118,20 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/BlueFont"
+                android:layout_marginBottom="20dp"
                 android:textSize="16sp"
                 tools:text="Grau de risco do investimento" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_chart"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/risk_title"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="22dp">
+
+
+            </com.github.mikephil.charting.charts.BarChart>
 
         </RelativeLayout>
 

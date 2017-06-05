@@ -24,7 +24,7 @@
         tools:layout_constraintRight_creator="1"
         tools:text="Olá, primeiro se apresente\n com o seu nome:" />
 
-    <test.edualves.easynvesttest.form.ui.CustomTextInputLayout
+    <test.edualves.easynvesttest.utils.CustomTextInputLayout
         android:id="@+id/email_text_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             android:maxLines="1"
             tools:hint="@string/email_label_form" />
 
-    </test.edualves.easynvesttest.form.ui.CustomTextInputLayout>
+    </test.edualves.easynvesttest.utils.CustomTextInputLayout>
 
     <CheckBox
         android:id="@+id/checkbox_email"
@@ -62,6 +62,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="35dp"
+        android:textColor="@color/Manatee"
         android:text="@string/email_checkbox_text"
         android:textSize="14sp"
         app:layout_constraintHorizontal_bias="0.08"
@@ -96,7 +97,7 @@
 
     </RelativeLayout>
 
-    <test.edualves.easynvesttest.form.ui.CustomTextInputLayout
+    <test.edualves.easynvesttest.utils.CustomTextInputLayout
         android:id="@+id/name_text_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -124,19 +125,35 @@
             android:maxLines="1"
             tools:hint="@string/name_label_form" />
 
-    </test.edualves.easynvesttest.form.ui.CustomTextInputLayout>
+    </test.edualves.easynvesttest.utils.CustomTextInputLayout>
 
     <ImageView
         android:id="@+id/name_clear"
         android:layout_width="17dp"
         android:layout_height="17dp"
         android:layout_marginEnd="7dp"
-        android:layout_marginRight="14dp"
+        android:layout_marginRight="7dp"
         android:layout_marginTop="7dp"
         android:src="@drawable/ic_limpar"
         app:layout_constraintRight_toRightOf="@+id/name_text_input"
         app:layout_constraintTop_toTopOf="@+id/name_text_input"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
+
+    <ImageView
+        android:id="@+id/email_clear"
+        android:layout_width="0dp"
+        android:layout_height="17dp"
+        android:src="@drawable/ic_limpar"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/email_text_input"
+        app:layout_constraintRight_toRightOf="@+id/name_clear"
+        android:layout_marginTop="28dp"
+        app:layout_constraintTop_toBottomOf="@+id/name_text_input"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintLeft_toLeftOf="@+id/name_clear" />
 
 </android.support.constraint.ConstraintLayout>

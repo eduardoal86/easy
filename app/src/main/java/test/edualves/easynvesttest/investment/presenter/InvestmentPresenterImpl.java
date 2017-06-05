@@ -62,23 +62,6 @@ public class InvestmentPresenterImpl implements InvestmentPresenter {
         return entries;
     }
 
-    public static int convertDateStringToDateAsInt(String dateString) {
-        int dateInt = 0;
-
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/yyyy");
-
-        try {
-
-            Date parseDate = sdf.parse(dateString);
-            dateInt = (int) (parseDate.getTime() / 1000);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return dateInt;
-    }
-
     @Override
     public IAxisValueFormatter setUpPeriods(final String[] periods) {
 

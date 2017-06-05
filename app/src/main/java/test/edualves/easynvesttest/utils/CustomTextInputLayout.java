@@ -1,4 +1,4 @@
-package test.edualves.easynvesttest.form.ui;
+package test.edualves.easynvesttest.utils;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

@@ -1,14 +1,14 @@
-package test.edualves.easynvesttest.form.ui;
+package test.edualves.easynvesttest.investment.ui;
 
 import test.edualves.easynvesttest.utils.CustomTextInputLayout;
 
 /**
- * Created by edualves on 26/05/17.
+ * Created by edualves on 03/06/17.
  */
 
-public interface MainFormFragmentView {
-
+public interface ContactView {
     void setErrorMandatoryField(CustomTextInputLayout field);
 
     void setInvalidEmailError();
+
 }

@@ -1,12 +1,13 @@
-package test.edualves.easynvesttest.form.ui;
+package test.edualves.easynvesttest.investment.ui;
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,17 +18,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.edualves.easynvesttest.R;
-import test.edualves.easynvesttest.utils.CustomTextInputLayout;
-import test.edualves.easynvesttest.utils.Utils;
 import test.edualves.easynvesttest.form.presenter.FormPresenter;
 import test.edualves.easynvesttest.form.presenter.FormPresenterImpl;
+import test.edualves.easynvesttest.investment.presenter.ContactPresenterImpl;
 import test.edualves.easynvesttest.model.Cell;
+import test.edualves.easynvesttest.utils.CustomTextInputLayout;
+import test.edualves.easynvesttest.utils.Utils;
 
 /**
- * Created by edualves on 25/05/17.
+ * Created by edualves on 02/06/17.
  */
 
-public class MainFormFragment extends Fragment implements MainFormFragmentView {
+//TODO implements an interface to read json as service layer. THE SAME will be implemented on MainFormFragment
+public class ContactFragment extends Fragment implements ContactView {
 
     @BindView(R.id.name_text_input)
     CustomTextInputLayout nameTextInput;
@@ -35,54 +38,58 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     @BindView(R.id.email_text_input)
     CustomTextInputLayout emailTextInput;
 
-    @BindView(R.id.input_name)
-    EditText nameEditText;
+    @BindView(R.id.phone_text_input)
+    CustomTextInputLayout phoneTextInput;
 
-    @BindView(R.id.input_email)
-    EditText emailEditText;
+    @BindView(R.id.checkbox_email)
+    CheckBox checkboxEmail;
 
-    @BindView(R.id.title_message)
-    TextView titleMessage;
+    @BindView(R.id.form_contact_container)
+    RelativeLayout formContactLayout;
 
-    private FormPresenter presenter;
+    @BindView(R.id.contact_success_container)
+    RelativeLayout contactSuccessLayout;
+
+    FormPresenter presenter;
+
     private List<Cell> cells = new ArrayList<>();
 
     private Map<CustomTextInputLayout, Cell> fieldsMap = new HashMap<>();
-    private String titleMsg;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
-        View view = inflater.inflate(R.layout.fragment_main_form, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact, container, false);
         ButterKnife.bind(this, view);
 
-        presenter = new FormPresenterImpl(this);
-
+        presenter = new ContactPresenterImpl(this);
         cells = presenter.getCells(Utils.readJsonCells(getActivity()));
-
         setUpConfigs();
 
-        formatTitleMessage();
-        setUpFields();
-
+        setUpFormContact();
 
         return view;
     }
 
+    private void setUpFormContact() {
+
+        nameTextInput.setHint(cells.get(1).getMessage());
+        checkboxEmail.setText(cells.get(2).getMessage());
+        emailTextInput.setHint(cells.get(3).getMessage());
+        phoneTextInput.setHint(cells.get(5).getMessage());
+
+    }
+
     private void setUpConfigs() {
 
-        //TODO Use different Structure for store this
         for (int i = 0; i < cells.size(); i++) {
 
-            if (cells.get(i).getType() == 2) {
-                titleMsg = cells.get(i).getMessage();
-            }
-
-            //TODO Change 1 for Enum value
-            if (cells.get(i).getType() == 1) {
+            if (Cell.TypeField.TEXT.typeField == cells.get(i).getType()) {
                 if (cells.get(i).getMessage().startsWith("Nome")) {
                     fieldsMap.put(nameTextInput, cells.get(i));
                 } else if (cells.get(i).getMessage().startsWith("Email")) {
                     fieldsMap.put(emailTextInput, cells.get(i));
+                } else if (cells.get(i).getMessage().startsWith("Telefone")) {
+                    fieldsMap.put(phoneTextInput, cells.get(i));
                 }
 
             }
@@ -90,27 +97,24 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
 
     }
 
-    private void formatTitleMessage() {
-        titleMessage.setText(Utils.countCharsForSpace(titleMsg, 27));
-    }
+    @OnClick(R.id.send_message)
+    void clickOnSendMessage() {
 
-    private void setUpFields() {
-
-        nameTextInput.setHint(cells.get(1).getMessage());
-        emailTextInput.setHint(cells.get(3).getMessage());
-
-    }
-
-    @OnClick(R.id.send_btn)
-    void sendInfo() {
         isMandatoryField();
         if (isEmailValid()) {
-            goToSuccessScreen();
+            formContactLayout.setVisibility(View.GONE);
+            contactSuccessLayout.setVisibility(View.VISIBLE);
         }
+
     }
 
-    private boolean isEmailValid() {
-        return presenter.validateEmailField(emailTextInput.getEditText().getText().toString());
+    @OnClick(R.id.send_new_message)
+    void sendNewMessage() {
+        nameTextInput.getEditText().setText("");
+        emailTextInput.getEditText().setText("");
+        phoneTextInput.getEditText().setText("");
+        contactSuccessLayout.setVisibility(View.GONE);
+        formContactLayout.setVisibility(View.VISIBLE);
     }
 
     private void isMandatoryField() {
@@ -127,18 +131,8 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
 
     }
 
-    private void goToSuccessScreen() {
-        ((MainFormActivity) getActivity()).showSuccessScreen();
-    }
-
-    @OnClick(R.id.name_clear)
-    void clearContentNameInput() {
-        nameEditText.setText("");
-    }
-
-    @OnClick(R.id.email_clear)
-    void clearContentEmailInput() {
-        emailEditText.setText("");
+    private boolean isEmailValid() {
+        return presenter.validateEmailField(emailTextInput.getEditText().getText().toString());
     }
 
     @Override
@@ -150,6 +144,4 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     public void setInvalidEmailError() {
         emailTextInput.setError(getResources().getString(R.string.invalid_email_error));
     }
-
-
 }

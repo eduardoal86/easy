@@ -2,7 +2,7 @@ package test.edualves.easynvesttest.form.presenter;
 
 import java.util.List;
 
-import test.edualves.easynvesttest.form.ui.CustomTextInputLayout;
+import test.edualves.easynvesttest.utils.CustomTextInputLayout;
 import test.edualves.easynvesttest.model.Cell;
 
 /**
@@ -11,7 +11,8 @@ import test.edualves.easynvesttest.model.Cell;
 
 public interface FormPresenter {
 
-    List<Cell> convertStringJsonToCellsObject(String json);
+    //TODO Extract to another interface just to read this jSON
+    List<Cell> getCells(String json);
 
     void validateFieldIsEmpty(CustomTextInputLayout field, String str);
 
