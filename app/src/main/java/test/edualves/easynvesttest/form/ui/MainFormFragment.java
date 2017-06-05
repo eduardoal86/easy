@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -35,6 +36,9 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     @BindView(R.id.email_text_input)
     CustomTextInputLayout emailTextInput;
 
+    @BindView(R.id.checkbox_email)
+    CheckBox checkBoxEmail;
+
     @BindView(R.id.input_name)
     EditText nameEditText;
 
@@ -43,6 +47,9 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
 
     @BindView(R.id.title_message)
     TextView titleMessage;
+
+    @BindView(R.id.send_btn_text)
+    TextView sendBtnText;
 
     private FormPresenter presenter;
     private List<Cell> cells = new ArrayList<>();
@@ -97,7 +104,9 @@ public class MainFormFragment extends Fragment implements MainFormFragmentView {
     private void setUpFields() {
 
         nameTextInput.setHint(cells.get(1).getMessage());
+        checkBoxEmail.setText(cells.get(2).getMessage());
         emailTextInput.setHint(cells.get(3).getMessage());
+        sendBtnText.setText(cells.get(6).getMessage());
 
     }
 
