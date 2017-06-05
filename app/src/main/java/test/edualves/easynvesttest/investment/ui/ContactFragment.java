@@ -29,7 +29,6 @@ import test.edualves.easynvesttest.utils.Utils;
  * Created by edualves on 02/06/17.
  */
 
-//TODO implements an interface to read json as service layer. THE SAME will be implemented on MainFormFragment
 public class ContactFragment extends Fragment implements ContactView {
 
     @BindView(R.id.name_text_input)
@@ -113,6 +112,7 @@ public class ContactFragment extends Fragment implements ContactView {
         nameTextInput.getEditText().setText("");
         emailTextInput.getEditText().setText("");
         phoneTextInput.getEditText().setText("");
+        checkboxEmail.setChecked(false);
         contactSuccessLayout.setVisibility(View.GONE);
         formContactLayout.setVisibility(View.VISIBLE);
     }
