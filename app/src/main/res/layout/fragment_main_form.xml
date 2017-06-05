@@ -143,18 +143,12 @@
 
     <ImageView
         android:id="@+id/email_clear"
-        android:layout_width="0dp"
+        android:layout_width="17dp"
         android:layout_height="17dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="28dp"
         android:src="@drawable/ic_limpar"
-        app:layout_constraintBottom_toBottomOf="@+id/email_text_input"
-        app:layout_constraintLeft_toLeftOf="@+id/name_clear"
-        app:layout_constraintRight_toRightOf="@+id/name_clear"
-        app:layout_constraintTop_toBottomOf="@+id/name_text_input"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/email_text_input"
+        app:layout_constraintTop_toTopOf="@+id/email_text_input"
+        android:layout_marginTop="8dp" />
 
 </android.support.constraint.ConstraintLayout>
