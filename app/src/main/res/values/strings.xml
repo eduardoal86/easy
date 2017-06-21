@@ -19,7 +19,7 @@
     <string name="text_menu_contact">Contato</string>
     <string name="text_menu_investment">Investimento</string>
     <string name="btn_invest_title">Investir</string>
-    <string name="contact_title">Contato</string>
+    <string name="contact_title">Olá, primeiro se apresente com o seu nome:</string>
     <string name="phone_label_form">Telefone</string>
     <string name="btn_send_message">Enviar</string>
     <string name="thanks_contact">Obrigado!</string>

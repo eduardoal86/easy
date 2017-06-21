@@ -26,7 +26,7 @@ public class Cell implements Serializable {
     private Boolean isHidden;
 
     @SerializedName("topSpacing")
-    private Integer topSpacing;
+    private Float topSpacing;
 
     @SerializedName("show")
     private Integer show;
@@ -74,11 +74,11 @@ public class Cell implements Serializable {
         isHidden = hidden;
     }
 
-    public Integer getTopSpacing() {
+    public Float getTopSpacing() {
         return topSpacing;
     }
 
-    public void setTopSpacing(Integer topSpacing) {
+    public void setTopSpacing(Float topSpacing) {
         this.topSpacing = topSpacing;
     }
 
