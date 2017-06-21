@@ -61,6 +61,8 @@ public class ContactFragment extends Fragment implements ContactView {
 
     FormPresenter presenter;
 
+    private boolean hasError;
+
     private List<Cell> cells = new ArrayList<>();
 
     private Map<CustomTextInputLayout, Cell> fieldsMap = new HashMap<>();
@@ -150,11 +152,16 @@ public class ContactFragment extends Fragment implements ContactView {
     @OnClick(R.id.send_message)
     void clickOnSendMessage() {
 
+        hasError = false;
+
         isMandatoryField();
-        if (isEmailValid()) {
-            formContactLayout.setVisibility(View.GONE);
-            contactTitle.setVisibility(View.GONE);
-            contactSuccessLayout.setVisibility(View.VISIBLE);
+
+        if (!hasError) {
+            if (isEmailValid()) {
+                formContactLayout.setVisibility(View.GONE);
+                contactTitle.setVisibility(View.GONE);
+                contactSuccessLayout.setVisibility(View.VISIBLE);
+            }
         }
 
     }
@@ -174,7 +181,7 @@ public class ContactFragment extends Fragment implements ContactView {
 
         for (Map.Entry<CustomTextInputLayout, Cell> fields : fieldsMap.entrySet()) {
 
-            if (fields.getValue().getRequired()) {
+            if (fields.getValue().getRequired() && !fields.getValue().getHidden()) {
                 presenter.validateFieldIsEmpty(fields.getKey(), fields.getKey()
                         .getEditText()
                         .getText()
@@ -196,6 +203,7 @@ public class ContactFragment extends Fragment implements ContactView {
     @Override
     public void setErrorMandatoryField(CustomTextInputLayout field) {
         field.setError(getResources().getString(R.string.mandatory_field));
+        hasError = true;
     }
 
     @Override
