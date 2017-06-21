@@ -153,6 +153,7 @@ public class ContactFragment extends Fragment implements ContactView {
         isMandatoryField();
         if (isEmailValid()) {
             formContactLayout.setVisibility(View.GONE);
+            contactTitle.setVisibility(View.GONE);
             contactSuccessLayout.setVisibility(View.VISIBLE);
         }
 
@@ -165,6 +166,7 @@ public class ContactFragment extends Fragment implements ContactView {
         phoneTextInput.getEditText().setText("");
         checkboxEmail.setChecked(false);
         contactSuccessLayout.setVisibility(View.GONE);
+        contactTitle.setVisibility(View.VISIBLE);
         formContactLayout.setVisibility(View.VISIBLE);
     }
 
@@ -183,7 +185,12 @@ public class ContactFragment extends Fragment implements ContactView {
     }
 
     private boolean isEmailValid() {
-        return presenter.validateEmailField(emailTextInput.getEditText().getText().toString());
+        if (!cells.get(3).getHidden()) {
+            return presenter.validateEmailField(emailTextInput.getEditText().getText().toString());
+        } else {
+            return true;
+        }
+
     }
 
     @Override
@@ -196,7 +203,7 @@ public class ContactFragment extends Fragment implements ContactView {
         emailTextInput.setError(getResources().getString(R.string.invalid_email_error));
     }
 
-    private void setMargins (View view, int left, int top, int right, int bottom) {
+    private void setMargins(View view, int left, int top, int right, int bottom) {
         if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
             p.setMargins(left, top, right, bottom);
