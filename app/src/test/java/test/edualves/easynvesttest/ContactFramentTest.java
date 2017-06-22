@@ -1,5 +1,6 @@
 package test.edualves.easynvesttest;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
@@ -50,19 +51,31 @@ public class ContactFramentTest {
         Button sendBtn = (Button) contactFragment.getActivity().findViewById(R.id.send_message);
 
         assertNotNull("Name could not be found", name);
-        assertEquals(false, name.getHint().toString().isEmpty());
-        assertEquals("Nome completo", name.getHint().toString());
+
+        if (name.getVisibility() == View.VISIBLE) {
+            assertEquals(false, name.getHint().toString().isEmpty());
+            assertEquals("Nome completo", name.getHint().toString());
+        }
 
         assertNotNull("Email could not be found", email);
-        assertEquals(false, email.getHint().toString().isEmpty());
-        assertEquals("Email", email.getHint().toString());
+
+        if (email.getVisibility() == View.VISIBLE) {
+            assertEquals(false, email.getHint().toString().isEmpty());
+            assertEquals("Email", email.getHint().toString());
+        }
 
         assertNotNull("Phone could not be found", phone);
-        assertEquals(false, phone.getHint().toString().isEmpty());
-        assertEquals("Telefone", phone.getHint().toString());
+
+        if (phone.getVisibility() == View.VISIBLE) {
+            assertEquals(false, phone.getHint().toString().isEmpty());
+            assertEquals("Telefone", phone.getHint().toString());
+        }
 
         assertNotNull("Checkbox could not be found", checkBox);
-        assertEquals("Gostaria de cadastrar meu email", checkBox.getText().toString());
+
+        if (checkBox.getVisibility() == View.VISIBLE) {
+            assertEquals("Gostaria de cadastrar meu email", checkBox.getText().toString());
+        }
 
         assertNotNull("Text button could not be found", sendBtn.getText().toString());
         assertEquals("Enviar", sendBtn.getText().toString());

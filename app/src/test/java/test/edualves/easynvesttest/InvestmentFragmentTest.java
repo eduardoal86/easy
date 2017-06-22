@@ -11,7 +11,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
 
-import test.edualves.easynvesttest.form.ui.MainFormActivity;
+import test.edualves.easynvesttest.investment.ui.InvestmentActivity;
 import test.edualves.easynvesttest.investment.ui.InvestmentFragment;
 
 import static org.junit.Assert.assertEquals;
@@ -35,7 +35,7 @@ public class InvestmentFragmentTest {
     @Test
     public void investmentFragmentShouldNotBeNull() {
         InvestmentFragment investmentFragment = new InvestmentFragment();
-        SupportFragmentTestUtil.startFragment(investmentFragment, MainFormActivity.class);
+        SupportFragmentTestUtil.startFragment(investmentFragment, InvestmentActivity.class);
         assertNotNull(investmentFragment);
     }
 
