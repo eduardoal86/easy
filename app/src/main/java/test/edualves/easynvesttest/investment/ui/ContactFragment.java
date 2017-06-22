@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.edualves.easynvesttest.R;
-import test.edualves.easynvesttest.form.presenter.FormPresenter;
+import test.edualves.easynvesttest.investment.presenter.ContactPresenter;
 import test.edualves.easynvesttest.investment.presenter.ContactPresenterImpl;
 import test.edualves.easynvesttest.model.Cell;
 import test.edualves.easynvesttest.utils.CustomTextInputLayout;
@@ -59,7 +59,7 @@ public class ContactFragment extends Fragment implements ContactView {
     @BindView(R.id.contact_success_container)
     RelativeLayout contactSuccessLayout;
 
-    FormPresenter presenter;
+    ContactPresenter presenter;
 
     private boolean hasError;
 
