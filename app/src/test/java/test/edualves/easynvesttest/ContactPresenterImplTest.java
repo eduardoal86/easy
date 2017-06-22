@@ -8,7 +8,6 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import test.edualves.easynvesttest.form.presenter.FormPresenter;
 import test.edualves.easynvesttest.investment.presenter.ContactPresenter;
 import test.edualves.easynvesttest.investment.presenter.ContactPresenterImpl;
 import test.edualves.easynvesttest.investment.ui.ContactView;
@@ -28,7 +27,7 @@ public class ContactPresenterImplTest {
     @Mock
     private ContactView view;
 
-    private FormPresenter contactPresenter;
+    private ContactPresenter contactPresenter;
 
     @Before
     public void setup() throws Exception {

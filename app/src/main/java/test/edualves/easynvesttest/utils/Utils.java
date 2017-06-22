@@ -1,6 +1,8 @@
 package test.edualves.easynvesttest.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -77,6 +79,15 @@ public class Utils {
         }
 
         return stringBuilder.toString();
+    }
+
+    public static Integer convertDpToPx(Float dp) {
+
+        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
+
+        float px = dp * (metrics.densityDpi / 160f);
+
+        return Math.round(px);
     }
 
 }

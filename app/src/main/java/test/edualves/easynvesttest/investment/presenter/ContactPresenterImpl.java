@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-import test.edualves.easynvesttest.form.presenter.FormPresenter;
 import test.edualves.easynvesttest.investment.ui.ContactView;
 import test.edualves.easynvesttest.model.Cell;
 import test.edualves.easynvesttest.service.CellService;
@@ -16,7 +15,7 @@ import test.edualves.easynvesttest.utils.Utils;
  * Created by edualves on 02/06/17.
  */
 
-public class ContactPresenterImpl implements FormPresenter {
+public class ContactPresenterImpl implements ContactPresenter {
 
     private ContactView view;
 

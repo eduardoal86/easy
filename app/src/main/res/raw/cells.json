@@ -56,7 +56,7 @@
 			"message": "Telefone",
 			"typefield": 2,
 			"hidden": false,
-			"topSpacing": 10.0,
+			"topSpacing": 35.0,
 			"show": null, 
 			"required": true
 		},
